@@ -1,0 +1,17 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.content-spacer {
+    padding: 0 14px;
+}
+
+.tabs {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.h1 {
+    font-size: xx-large;
+}
+

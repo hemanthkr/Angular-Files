@@ -1,0 +1,60 @@
+<h2 class="h2" style="margin: 30px;">Registration form</h2>
+
+
+<div class="card">
+<form class="container" [formGroup]="regForm" novalidate (ngSubmit)="submit(regForm.value)">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" type="text" id="name" placeholder="name" formControlName="name">
+  </div>
+  <div *ngIf="regForm.controls['name'].invalid && (regForm.controls['name'].dirty || regForm.controls['name'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="regForm.controls['name'].errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="regForm.controls['name'].errors.minlength || regForm.controls['name'].errors.maxlength">
+        Name should be between 4 to 8 characters.
+      </div>
+    </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input class="form-control" type="email" id="email" placeholder="email ID" formControlName="email">
+  </div>
+  <div
+    *ngIf="regForm.controls['email'].invalid && (regForm.controls['email'].dirty || regForm.controls['email'].touched)"
+    class="alert alert-danger">
+    <div *ngIf="regForm.controls['email'].errors.required">
+      Email is required.
+    </div>
+    <div *ngIf="regForm.controls['email'].errors.email">
+      Email must be a valid address.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input class="form-control" type="text" id="phone" placeholder="phone number" formControlName="phone">
+  </div>
+
+  <div class="form-group">
+    <label for="courses">Courses</label>
+    <select class="form-control" id="courses" formControlName="courses">
+      <option value="" disabled selected>select a course</option>
+      <option>Angular</option>
+      <option>Bootstrap</option>
+      <option>HTML</option>
+      <option>CSS</option>
+      <option>JavaScript</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="remarks">Remarks</label>
+    <textarea class="form-control" type="text" id="remarks" formControlName="remarks" rows="3" placeholder="write your remarks"></textarea>
+  </div>
+
+  <button class="btn btn-outline-info" type="submit" [disabled]="regForm.pristine || regForm.invalid">Submit</button>
+</form>
+</div>
